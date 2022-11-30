@@ -1,0 +1,161 @@
+#photographer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#photographer img {
+    max-width: 350px;
+    min-width: 200px;
+    width: 30%;
+}
+
+#flip {
+    transform: scaleX(-1);
+}
+
+#homepage {
+    background: linear-gradient(0deg, rgba(48,10,131,1) 0%, rgba(12,0,54,1) 100%);
+}
+
+#grid .gridItem {
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 128, 10%);
+    border-radius: 10px;
+    border: 1px solid rgb(16, 16, 187);
+    padding: 10px 20px;
+    animation-name: fade;
+    animation-duration: 3s;
+    width: fit-content;
+}
+#grid {
+    column-gap: 4rem;
+    justify-content: center;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0%;
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+
+.logo {
+    width: 89%;
+}
+
+#uploadedImg {
+    width: 100%;
+}
+
+#closeImage {
+    position: absolute;
+    right: 0;
+}
+
+#grid div img {
+    width: 10vw;
+    max-width: 125px;
+    min-width: 75px;
+
+}
+
+#websiteDescription {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin-inline: auto;
+    row-gap: 15px;
+    margin-bottom: 10rem;
+    position: relative;
+    animation-name: opacity;
+    animation-duration: 2s;
+}
+
+@keyframes opacity {
+    from {
+        opacity: 0%;
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+
+#websiteDescription::after {
+    content: '';
+    width: 0%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    position: absolute;
+    backdrop-filter: blur(10px);
+    animation-name: swipe;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(1, -0.01, .12, .8);
+}
+
+@keyframes swipe {
+    from {
+        width: 100%;
+        backdrop-filter: blur(50%);
+
+    }
+
+    to {
+        width: 0%;
+        backdrop-filter: blur(50%);
+
+    }
+}
+
+@media screen and (max-width: 1110px) {
+    #grid {
+        gap:0;
+    }
+    html {
+        font-size: 14px;
+    }
+
+    #grid div {
+        word-wrap: break-word;
+        padding-inline: 10px;
+        width: 40vw;
+    }
+
+    #photographer {
+        margin-top: 150px;
+    }
+
+    #grid div img {
+        margin-left: auto;
+    }
+
+    html {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:700px) {
+    #grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    html {
+        font-size: 13px;
+    }
+
+    #grid div {
+        width: 50vw;
+        min-width: 300px;
+    }
+
+    #photographer {
+        margin-top: 185px;
+    }
+}

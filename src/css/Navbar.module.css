@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+* {
+    font-family: 'Kanit', sans-serif;
+}
+
+#navbarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(0deg, rgb(22, 3, 61) 0%, rgb(26, 5, 102) 100%);
+
+
+}
+#searchButton {
+    position: absolute;
+    right:0;
+    top:0;
+}
+
+#header {
+    margin-left: 20px;
+    font-size: calc(12px + 1vw);
+    user-select: none;
+}
+
+#search {
+    margin-inline: auto;
+    width: 30vw;
+    position: relative;
+}
+
+#navbarControls {
+    margin-right: 3rem;
+    display: flex;
+    column-gap: 2vw;
+    font-size: calc(12px + 0.4vw);
+    position: relative;
+    user-select: none;
+}
+#navbarControls span:hover {
+    color: rgb(98, 136, 240);
+}
