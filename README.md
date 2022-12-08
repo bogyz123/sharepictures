@@ -4,3 +4,4 @@
 - [x] Fix RecentImages.js design
 - [ ] Add functionality to upload multiple images
 - [ ] Add functionality for likes/dislikes (?)
+- [ ] Add animation for github card
