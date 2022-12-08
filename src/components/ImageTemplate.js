@@ -8,13 +8,22 @@ import "../css/Global.css";
 import { getDownloadURL, getMetadata, getStorage, ref } from "firebase/storage";
 
 
+export const shortenSize = (size) => {
+    var stringified = String(size);
+
+    var beforeDot = stringified.substring(0, stringified.indexOf(".", 0));
+    var afterDot = stringified.substring(stringified.indexOf(".", 0), stringified.indexOf(".", 0) + 3);
+    return beforeDot + afterDot;
+   
+    // * 0.000001
+}
 export default function ImageTemplate() {
     const { id } = useParams();
     const [error, setError] = useState(false);
     const [image, setImage] = useState();
     const [metadata, setMetadata] = useState({});
+    const [size, setSize] = useState("");
     const [downloadLink, setDownloadLink] = useState(null);
-
     useEffect(() => {
 
         getDownloadURL(ref(storage, `images/${id}`)).then((url) => {
@@ -24,17 +33,18 @@ export default function ImageTemplate() {
         }).then(() => {
             getMetadata(ref(storage, `images/${id}`)).then((metadata) => {
                 setMetadata(metadata);
+                setSize(shortenSize(metadata.size * 0.000001));
             })
         })
     }, [])
     return (
-        <div id={styles.template} className="flex | flexCol | centerY">
+        <div id={styles.template} className="flex | flexCol | centerY | centerX">
+            
             {error && <div><Alert severity="error">This image does not exist.</Alert></div>}
             <img src={image} id={styles.image} />
             {image != null &&
                 <div className=' flex | flexCol | centerY'>
-                    <h3><em>Uploaded on {metadata.timeCreated}</em></h3>
-                    <h4 id='size'>Size (MB): {metadata.size * 0.000001}</h4>
+                    <h4 id='size'>Size (MB): {size}</h4>
                     <Button variant='contained'><a download href={`${image}`}>Download</a></Button>
                 </div>
             }

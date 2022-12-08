@@ -1,4 +1,4 @@
-#templateContainer {
+#template {
     background-color: inherit;
     display: flex;
     height: 10%;
@@ -6,7 +6,8 @@
     height:100%;
 }
 #image {
-    max-width: 730px;
+    max-width: 650px;
+    border-radius: 10px;
     width: 70vw;
 }
 #size {

@@ -19,7 +19,7 @@ export default function Footer() {
                 <div className={`${styles.gridItem} flex | flexCol`}>
                     <span className="hoverable">Contact Us</span>
                     <span className="hoverable">About Us</span>
-                    <span className="hoverable">GitHub</span>
+                    <a href='https://github.com/bogyz123/sharepictures' target='_blank' className="hoverable">GitHub</a>
                 </div>
 
                 <div className={styles.gridItem}>

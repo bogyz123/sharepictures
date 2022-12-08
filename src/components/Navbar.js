@@ -10,9 +10,9 @@ function Navbar() {
 
     return (
         <div id={styles.navbarContainer}>
-            <h2 id={styles.header} className="hoverable" onClick={() => nav('/')}>Share Images</h2>
+            <h2 id={styles.header} className="hoverable | hoverAnimation" onClick={() => nav('/')}>Share Images</h2>
 
-            <div id={styles.navbarControls} className="hoverable">
+            <div id={styles.navbarControls} className="hoverable | hoverAnimation">
                 <span onClick={() => nav("/recentuploads")}>Recent Uploads</span>
             </div>
         </div>

@@ -16,10 +16,10 @@
 }
 
 #homepage {
-    background: linear-gradient(0deg, rgba(48,10,131,1) 0%, rgba(12,0,54,1) 100%);
+    background: linear-gradient(0deg, rgba(48, 10, 131, 1) 0%, rgba(12, 0, 54, 1) 100%);
 }
 
-#grid .gridItem {
+.gridItem {
     backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 128, 10%);
     border-radius: 10px;
@@ -27,11 +27,57 @@
     padding: 10px 20px;
     animation-name: fade;
     animation-duration: 3s;
-    width: fit-content;
+    max-width: 400px;
+    font-size: 1.2rem;
 }
-#grid {
-    column-gap: 4rem;
+footer {
+    font-size: 1.1rem;
+}
+.gridItem img {
+    width: 8vw;
+    min-width: 100px;
+}
+
+.grid {
+    display: flex;
     justify-content: center;
+    column-gap: 35px;
+}
+
+#github {
+    width: 15vw;
+    min-width: 120px;
+    max-width: 600px;
+    margin: 100px 0px;
+}
+
+#githubLink {
+    color: cyan;
+}
+
+#gitDescription {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+#githubSection {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    background-color: rgb(42, 23, 117);
+    font-size: 1.7rem;
+    margin-top: 2rem;
+    gap: 25px;
+    width: 80%;
+    margin-inline:auto;
+    border-radius: 15px;
+    padding-inline: 4rem;
+}
+
+.gitItem {
+
+    align-self: center;
+    justify-self: center;
+
 }
 
 @keyframes fade {
@@ -56,16 +102,22 @@
     position: absolute;
     right: 0;
 }
+#close {
+    margin-left: auto;
+}
 
 #grid div img {
     width: 10vw;
     max-width: 125px;
     min-width: 75px;
+    
 
 }
 
+
 #websiteDescription {
     text-align: center;
+    font-size: 1.5rem;
     display: flex;
     flex-direction: column;
     width: fit-content;
@@ -115,47 +167,48 @@
 }
 
 @media screen and (max-width: 1110px) {
-    #grid {
-        gap:0;
-    }
     html {
         font-size: 14px;
     }
 
-    #grid div {
-        word-wrap: break-word;
-        padding-inline: 10px;
-        width: 40vw;
+    #githubSection {
+        font-size: 1.5rem;
     }
 
     #photographer {
         margin-top: 150px;
     }
 
-    #grid div img {
-        margin-left: auto;
-    }
-
     html {
         font-size: 14px;
     }
+
 }
 
-@media screen and (max-width:700px) {
-    #grid {
-        grid-template-columns: 1fr;
-        justify-items: center;
-    }
+@media screen and (max-width:810px) {
     html {
-        font-size: 13px;
+        font-size: 12px;
     }
 
-    #grid div {
-        width: 50vw;
-        min-width: 300px;
-    }
 
     #photographer {
         margin-top: 185px;
+    }
+
+    #githubSection {
+        font-size: 1.3rem;
+        padding: 0px 20px;
+        width: 100%;
+        border-radius: 0px;
+    }
+
+    .grid {
+        flex-direction: column;
+        max-width: 100%;
+        row-gap: 10px;
+    }
+
+    .gridItem {
+        max-width: 100%;
     }
 }
