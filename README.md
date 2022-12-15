@@ -7,3 +7,5 @@ Built w/ REACT.js, Firebase Storage and MaterialUI. </br>
 • JPEG
 • SVG
 • GIF
+<strong TODO <strong/>
+- [] asd
