@@ -8,4 +8,4 @@ Built w/ REACT.js, Firebase Storage and MaterialUI. </br>
 • SVG
 • GIF
 <strong TODO <strong/>
-- [] asd
+- [ ] asd
