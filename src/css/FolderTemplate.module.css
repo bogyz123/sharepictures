@@ -1,0 +1,14 @@
+#container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 450px);
+    place-content: center;
+    justify-content: center;
+    justify-items: center;
+    gap: 1.5rem;
+}
+
+.image {
+    max-width: 400px;
+    border-radius: .5rem;
+    cursor: pointer;
+}

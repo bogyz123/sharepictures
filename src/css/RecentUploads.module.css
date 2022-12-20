@@ -2,13 +2,17 @@
     display: flex;
     flex-wrap: wrap;
     height: 100vh;
-    padding: 3rem 1rem 3rem  1rem;
-    gap: .5rem;
-    background: linear-gradient(0deg, rgba(9,1,27,1) 0%, rgba(23,2,98,1) 100%);
+    padding: 3rem 1rem 3rem 1rem;
+    gap: 1rem;
+    background: linear-gradient(0deg, rgba(9, 1, 27, 1) 0%, rgb(34, 14, 107) 100%);
     justify-content: start;
+    
 
 }
 
+.likeRatio {
+    column-gap: 5px;
+}
 
 
 .imageContainer {
@@ -21,10 +25,17 @@
     border-radius: 10px;
     padding: 7px 12px;
 }
+
+
 #likes {
     column-gap: 2rem;
 }
-
+.container {
+    transition: .8s ease scale;
+}
+.container:hover {
+    scale: 1.1;
+}
 * {
     box-sizing: border-box;
 }
@@ -39,15 +50,37 @@
     margin: 0;
     padding: 0;
 }
+
 #emptyList {
     margin: auto;
     font-size: 1.3rem;
 }
 
 
-.image:hover {
-    outline: 3px solid green;
+
+
+.folderContainer {
+
+    position: relative;
 }
+.folder {
+    transition: all 2s;
+}
+.folder:hover {
+    scale: 1.01;
+}
+
+.folderContainer p {
+    position: absolute;
+    font-size: .8rem;
+    left: 37px;
+}
+
+.folderContainer .folderText {
+    top: 43px;
+}
+
+
 @media screen and (max-width: 1130px) {
     #imageList {
         justify-content: center;
