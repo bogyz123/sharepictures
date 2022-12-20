@@ -1,31 +1,32 @@
+import { Close } from "@mui/icons-material";
+import { Alert, Button, Dialog, Input, LinearProgress, Snackbar } from "@mui/material";
+import { getDownloadURL, ref, updateMetadata, uploadBytes } from "firebase/storage";
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
+import { v4 } from "uuid";
+import "../css/Global.css";
+import styles from "../css/Home.module.css";
+import dataprocess from "../images/dataprocess.svg";
+import explore from "../images/explore.svg";
+import github from "../images/github.png";
 import people from "../images/people.svg";
 import photographer from "../images/photographer.svg";
-import dataprocess from "../images/dataprocess.svg";
 import safe from "../images/safe.svg";
-import steps from "../images/steps.svg";
-import styles from "../css/Home.module.css";
-import { Alert, Button, Dialog, Grid, IconButton, Snackbar } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import "../css/Global.css";
-import { ref, uploadBytes } from "firebase/storage";
 import { storage } from "./fire_connection";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { v4 } from "uuid";
-import CopyToClipboard from "react-copy-to-clipboard";
-import CloseIcon from '@mui/icons-material/Close';
 import Footer from "./Footer";
-import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
-import github from "../images/github.png";
 
 export default function Homepage() {
 
-    const [imgBlob, setImgBlob] = useState();
-    const [image, setImage] = useState();
+
     const [open, setOpen] = useState(false);
+    const [files, setFiles] = useState([]);
+    const [imageTitle, setImageTitle] = useState();
     const [uploadSuccess, setUploadSuccess] = useState(false);
     const [uploadError, setUploadError] = useState(false);
     const [url, setUrl] = useState(null);
+    const [uploading, setUploading] = useState(false);
+
+
     const styling = {
         button: {
             width: '100%',
@@ -35,29 +36,67 @@ export default function Homepage() {
             fontSize: '1.1rem'
 
         },
-        dialog: {
-            backgroundColor: 'inherit',
+        dialogPaper: {
+            padding: '2rem 4rem',
+            borderRadius: '.35rem',
+            color: '#fff',
+            background: 'linear-gradient(#444, #222)',
+            fontSize: '1.2rem'
+        },
+        inputPlaceholder: {
+            color: '#fff',
+            fontFamily: 'Kanit, sans-serif'
+        },
+        closeIcon: {
+            position: 'absolute'
         }
-    }
 
+    }
     const handleChange = (e) => {
-
-        setUrl(null);
+        setFiles([...e.target.files]);
         setOpen(true);
-        setImgBlob(URL.createObjectURL(e.target.files[0]));
-        setImage(e.target.files[0]);
     }
 
-    const upload = () => {
-        const uuid = v4();
-        const reference = ref(storage, `images/${uuid}`);
+    const nav = useNavigate();
 
-        uploadBytes(reference, image).then(() => {
-            setUploadSuccess(true);
-            setUrl(uuid);
-            navigator.clipboard.writeText(`sharepictures.online/image/${uuid}`);
-        }).catch(() => setUploadError(true));
+    // Everything should work.. To fix: every single CSS design... Layout is bad, colors are repeating (gradient), too much blue
+    // Too much space..add useMemo, add useCallback to some components, fix RecentUploads design error (height is 100vh)
+    // add github functionalities
+    const upload = async () => {
+        const imageCount = files.length;
+        const folderPath = `/images/${v4()}`;
+        setUploading(true);
+        if (imageCount > 1) {
+            files.map((file, index) => {
+                const reference = ref(storage, folderPath + `/${index}`);
+                uploadBytes(reference, file).then(async () => {
 
+                    if (imageTitle != undefined) {
+                        const metadata = {
+                            customMetadata: {
+                                title: imageTitle
+                            }
+                        }
+                        await updateMetadata(reference, metadata);
+                    }
+                    if (index == files.length - 1){
+                        setUrl(folderPath);
+                    }
+                })
+            });
+
+        }
+
+        else {
+            const randomName = v4();
+            const reference = ref(storage, `/images/${randomName}`);
+            uploadBytes(reference, files[0]).then(() => {
+                
+                getDownloadURL(reference).then(() => {
+                    setUrl(`/image/${randomName}`);
+                })
+            });
+        }
     }
 
 
@@ -79,10 +118,9 @@ export default function Homepage() {
                 </div>
 
                 <div id={styles.websiteDescription}>
-
                     <p>Share pictures with others in no time!</p>
                     <small>Share your favorite photos with other people on the internet. <br /> *Deleted images are removed from the server too.</small>
-                    <Button variant="contained" component="label" sx={{fontSize:'1.1rem'}}>
+                    <Button variant="contained" component="label" sx={{ fontSize: '1.1rem' }}>
 
                         Upload
                         <input onChange={(e) => handleChange(e)} accept="image/*" multiple type="file" hidden />
@@ -93,23 +131,39 @@ export default function Homepage() {
 
 
 
-                <Dialog open={open}>
-                    <div style={styling.dialog} className='flex | flexCol'>
-                        <CloseIcon className="hoverable" id={styles.close} color='action' sx={{ color: "#fff", mixBlendMode: "difference" }} onClick={() => setOpen(false)} />
-                        {<img src={imgBlob} />}
-                        {url == null && <Button variant='contained' onClick={upload}><ArrowForwardIosIcon /></Button>}
+                <Dialog open={open} PaperProps={{ style: styling.dialogPaper }}>
+                    <span style={{ marginLeft: 'auto' }} onClick={() => setOpen(false)} className='hoverable'>
+                        <Close color='error' sx={styling.closeIcon} />
+                    </span>
+                    <h3>Image/s</h3>
+                    <Input sx={styling.inputPlaceholder} type='text' placeholder="Title (optional)" />
+                    <small><center>Total {files.length} images</center></small>
+                    {files.length >= 1 &&
 
-                        {url != null &&
-                            <>
-                                <CopyToClipboard text={url}>
-                                    <Button color='success' variant='contained'><Link style={{ width: '100%', height:'100%'}} to={`/image/${url}`}>Open</Link></Button>
-                                </CopyToClipboard>
 
-                            </>
 
-                        }
+                        <div className='flex | flexCol'>
+                            <div id={styles.preview}>
+                                {files.map((file, index) => {
+                                    return <img key={index} src={URL.createObjectURL(file)} className={styles.previewImage} />
+                                })}
+                            </div>
 
-                    </div>
+                            {url != null ?
+                                files.length === 1 ?
+                                    <Button variant='contained' color='success' onClick={() => nav(url)}>Open</Button>
+                                    :
+                                    <Button variant='contained' color='success' onClick={() => nav("/folder", { state: { path: url } })}>Open</Button>
+                                :
+
+                                uploading ? <LinearProgress color="success" /> : <Button variant='contained' onClick={() => upload()}>Submit</Button>
+                            }
+                        </div>
+
+
+
+
+                    }
                 </Dialog>
 
             </main>
@@ -125,6 +179,11 @@ export default function Homepage() {
                     <img src={safe} />
                     <h4>Protect your files</h4>
                     <p>Only allow certain people to access your files by using a <strong>password.</strong></p>
+                </div>
+                <div className={styles.gridItem}>
+                    <img src={explore} />
+                    <h4>Explore images</h4>
+                    <p>See other people's images on the <strong className="hoverable" onClick={() => nav("/recentuploads")}>Recent Uploads</strong> tab.</p>
                 </div>
             </div>
 

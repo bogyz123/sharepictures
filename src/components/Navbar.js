@@ -1,8 +1,5 @@
-import styles from "../css/Navbar.module.css";
-import { Input } from "@mui/material";
 import { useNavigate } from "react-router";
-import { useImperativeHandle, useState } from "react";
-import { ArrowForward, ArrowLeft, ArrowRight } from "@mui/icons-material";
+import styles from "../css/Navbar.module.css";
 
 function Navbar() {
 

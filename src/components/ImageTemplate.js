@@ -1,11 +1,10 @@
 import { Alert, Button } from "@mui/material";
-import { doc, getDoc } from "firebase/firestore";
+import { getDownloadURL, getMetadata, ref } from "firebase/storage";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router"
-import { db, storage } from "./fire_connection";
-import styles from "../css/ImageTemplate.module.css";
+import { useParams } from "react-router";
 import "../css/Global.css";
-import { getDownloadURL, getMetadata, getStorage, ref } from "firebase/storage";
+import styles from "../css/ImageTemplate.module.css";
+import { storage } from "./fire_connection";
 
 
 export const shortenSize = (size) => {
@@ -14,7 +13,7 @@ export const shortenSize = (size) => {
     var beforeDot = stringified.substring(0, stringified.indexOf(".", 0));
     var afterDot = stringified.substring(stringified.indexOf(".", 0), stringified.indexOf(".", 0) + 3);
     return beforeDot + afterDot;
-   
+
     // * 0.000001
 }
 export default function ImageTemplate() {
@@ -39,7 +38,7 @@ export default function ImageTemplate() {
     }, [])
     return (
         <div id={styles.template} className="flex | flexCol | centerY | centerX">
-            
+
             {error && <div><Alert severity="error">This image does not exist.</Alert></div>}
             <img src={image} id={styles.image} />
             {image != null &&

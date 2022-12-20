@@ -2,9 +2,9 @@
 import { Divider } from "@mui/material";
 import styles from "../css/Footer.module.css";
 import "../css/Global.css";
-import ReactSvg from "../images/react.svg";
-import MuiSvg from "../images/mui.svg";
 import FirebasePng from "../images/firebase.png";
+import MuiSvg from "../images/mui.svg";
+import ReactSvg from "../images/react.svg";
 
 export default function Footer() {
     return (
