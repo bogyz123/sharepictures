@@ -10,6 +10,6 @@ Built w/ REACT.js, Firebase Storage and MaterialUI. </br>
 <br />
 
 <strong>TODO</strong>
-- [ ] Implement like/dislike option for each image
+- [x] Implement like/dislike option for each image
 - [x] Allow multiple images to be uploaded
 - [ ] Allow people to include an option title when uploading an image
