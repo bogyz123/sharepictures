@@ -12,5 +12,5 @@ Built w/ REACT.js, Firebase Storage and MaterialUI. </br>
 <strong>TODO</strong>
 - [x] Implement like/dislike option for each image
 - [x] Allow multiple images to be uploaded
-- [ ] Allow people to include an option title when uploading an image
+- [x] Allow people to include an optional title when uploading an image
 - [ ] Fix 404 page upon going back on browser (Router issue)
