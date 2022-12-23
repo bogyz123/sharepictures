@@ -1,11 +1,12 @@
 #imageList {
     display: flex;
     flex-wrap: wrap;
-    height: 100vh;
     padding: 3rem 1rem 3rem 1rem;
     gap: 1rem;
     background: linear-gradient(0deg, rgba(9, 1, 27, 1) 0%, rgb(34, 14, 107) 100%);
     justify-content: start;
+    align-items: center;
+    
     
 
 }

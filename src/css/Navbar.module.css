@@ -27,17 +27,26 @@
 #navbarControls {
     margin-right: 3rem;
     display: flex;
-    column-gap: 2vw;
+    column-gap: 1vw;
     font-size: calc(12px + 0.4vw);
     position: relative;
     user-select: none;
-    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    align-items: center;
+   
+}
+#navbarControls span {
+    transition: color .4s ease-in-out, box-shadow .4s ease-in-out;
+}
+#navbarControls span:hover {
+    color: white;
+    box-shadow: inset 185px 0 0 0 rgb(0, 47, 255);
 }
 
 #header {
     margin-left: 20px;
     font-size: calc(12px + 1vw);
     user-select: none;
+    color: #fff;
 }
 
 .hoverAnimation {
@@ -46,8 +55,5 @@
     color: #54b3d6;
 }
 
-#navbarControls:hover {
-    color: white;
-    box-shadow: inset 185px 0 0 0 #6a21be;
-}
+
 
