@@ -12,10 +12,6 @@ The tools I've used to build this are the following:
 - Express.JS
 - QRJs library
 - MongoDB
-## Hosting
-
-It can be accessed 
-
 
 ## 🔗 URL
 It can be accessed [here!](https://bogyz123.github.io/sharepictures)
