@@ -1,7 +1,7 @@
 
 # SharePictures
 
-is a image-sharing website made in React
+is a image-sharing website made in React & Firebase!
 
 
 ## Tools used
