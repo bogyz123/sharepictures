@@ -1,0 +1,23 @@
+#footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.icon {
+    max-width: 25px;
+}
+h3 {
+    margin-inline: auto;
+}
+#listContainer {
+    margin-inline:auto;
+    column-gap: 10rem;
+    align-items: center;
+}
+.gridItem {
+    column-gap: .5rem;
+}
+ul {
+    list-style: none;
+}

@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+* {
+    font-family: 'Kanit', sans-serif;
+}
+
+#navbarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(0deg, rgb(22, 3, 61) 0%, rgb(26, 5, 102) 100%);
+}
+
+#searchButton {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+
+#search {
+    margin-inline: auto;
+    width: 30vw;
+    position: relative;
+}
+
+#navbarControls {
+    margin-right: 3rem;
+    display: flex;
+    column-gap: 1vw;
+    font-size: calc(12px + 0.4vw);
+    position: relative;
+    user-select: none;
+    align-items: center;
+   
+}
+#navbarControls span {
+    transition: color .4s ease-in-out, box-shadow .4s ease-in-out;
+}
+#navbarControls span:hover {
+    color: white;
+    box-shadow: inset 185px 0 0 0 rgb(0, 47, 255);
+}
+
+#header {
+    margin-left: 20px;
+    font-size: calc(12px + 1vw);
+    user-select: none;
+    color: #fff;
+}
+
+.hoverAnimation {
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    box-shadow: inset 185px 0 0 0 #6a21be;
+    color: #54b3d6;
+}
+
+
+

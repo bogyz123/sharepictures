@@ -1,0 +1,24 @@
+.flex {
+    display: flex;
+}
+.flexCol {
+    flex-direction: column;
+}
+* {
+    box-sizing: border-box;
+}
+.test {
+    background-color: red;
+}
+.centerX {
+    justify-content: center;
+}
+.centerY {
+    align-items: center;
+}
+.icon {
+    width: 100%;
+}
+.hoverable {
+    cursor: pointer;
+}
