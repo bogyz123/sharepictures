@@ -40,8 +40,6 @@ export default function RecentUploads() {
 
 
         })
-
-
     }, [])
 
 
@@ -51,7 +49,7 @@ export default function RecentUploads() {
             {isEmpty ? <Alert className="center" severity="error" color="warning" sx={{ background: 'crimson', color: '#fff', width: '100%', position: 'absolute', bottom: '0', left: '0' }}>No images uploaded</Alert> :
 
                 downloadLinks.map((img, index) =>
-                    <Image title={metadata[index].customMetadata.title} key={index} path={metadata[index].fullPath} type={metadata[index].contentType} image={img} size={shortenSize(metadata[index].size * 0.000001)} uploaded={metadata[index].timeCreated} />)}
+                    <Image title={metadata[index].customMetadata.title} key={index} path={metadata[index].fullPath} type={metadata[index].contentType} image={img} size={shortenSize(metadata[index].size * 0.000001)} uploaded={metadata[index].timeCreated.slice(0, -14)} />)}
             {folders.map((folder, index) =>
                 <div className={styles.folderContainer}>
                     <Folder key={index * 2} className={`hoverable ` + styles.folder} onClick={() => navigateFolder({ path: folder.fullPath })} sx={{ fontSize: '15rem' }} color='success' />
@@ -95,7 +93,10 @@ function Image({ image, size, uploaded, path, type, title }) {
     }, [])
 
     const likeImage = () => {
-        
+        // This is a good & a bad way to check if client liked the image or not. 
+        // Good: works, full privacy
+        // Bad: user can delete localStorage and re-like or re-dislike the image
+        // Potential fix is to add server-sided checking by storing the user's account id on the likedBy array on the image metadata but this website does not support account creation.
         var oldStorage = JSON.parse(localStorage.getItem("sharepictures_likes"));
         var dislikes = JSON.parse(localStorage.getItem("sharepictures_dislikes"));
 
@@ -115,7 +116,7 @@ function Image({ image, size, uploaded, path, type, title }) {
 
         getMetadata(reference).then(async (meta) => { // When that's done, get the current image metadata from the server, and append likes variable by 1
             const metadata = {
-                customMetadata: { 
+                customMetadata: {
                     likes: parseInt(meta.customMetadata.likes) + 1
                 }
             }
@@ -181,15 +182,21 @@ function Image({ image, size, uploaded, path, type, title }) {
                         {isDisliked ? < ThumbDownTwoTone /> : <ThumbDownSharp color='error' onClick={() => dislikeImage(path)} />}
                         <span>{dislikeCount}</span>
                     </div>
-                    <Snackbar open={isLiked} autoHideDuration={3000} onClose={() => setIsLiked(false)}>
-                        <Alert sx={styling.alert} severity="warning">You have already liked this image.</Alert>
-                    </Snackbar>
-                    <Snackbar open={isDisliked} autoHideDuration={3000} onClose={() => setIsDisliked(false)}>
-                        <Alert sx={styling.alert} severity="warning">You have already disliked this image.</Alert>
-                    </Snackbar>
+
 
                 </div>
             </div>
+                    <Snackbar open={isLiked} autoHideDuration={3000} onClose={() => setIsLiked(false)} sx={{ bottom: 0, left: 0, position: 'absolute' }}>
+                        <Alert sx={styling.alert} severity="warning">
+                            You have already liked this image.
+                        </Alert>
+                    </Snackbar>
+
+                    <Snackbar open={isDisliked} autoHideDuration={3000} onClose={() => setIsDisliked(false)} sx={{ bottom: 0, left: 0, position: 'absolute' }}>
+                        <Alert sx={styling.alert} severity="warning">
+                            You have already disliked this image.
+                        </Alert>
+                    </Snackbar>
 
         </div>
 
