@@ -108,7 +108,7 @@ export default function Homepage() {
                             title: imageTitle,
                             likes: 0,
                             dislikes: 0,
-                            path: + randomName
+                            path: randomName
                         }
                     }
                     await updateMetadata(reference, metadata);
