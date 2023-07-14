@@ -1,11 +1,11 @@
 import { Folder, ThumbDownSharp, ThumbDownTwoTone, ThumbUpSharp, ThumbUpTwoTone } from "@mui/icons-material";
-import { Alert, Snackbar } from "@mui/material";
+import { Alert, Button, Snackbar } from "@mui/material";
 import { getDownloadURL, getMetadata, getStorage, listAll, ref, updateMetadata } from "firebase/storage";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import styles from "../css/RecentUploads.module.css";
-import { storage } from "./fire_connection";
 import { shortenSize } from "./ImageTemplate";
+import { storage } from "./fire_connection";
 
 export default function RecentUploads() {
     const [downloadLinks, setDownloadLinks] = useState([]);
@@ -22,23 +22,17 @@ export default function RecentUploads() {
 
 
     useEffect(() => {
-        listAll(listRef, { maxResults: 20 }).then((response) => {
+        listAll(listRef, { maxResults: 20 }).then((response) => { // Get all files
             response.items.length == 0 && response.prefixes.length == 0 ? setIsEmpty(true) : setIsEmpty(false);
             setFolders([...response.prefixes]);
             response.items.map((item) => {
                 getDownloadURL(item).then((url) => {
                     getMetadata(item).then((meta) => {
-
                         setDownloadLinks(before => [...before, url]);
                         setMetadata(before => [...before, meta]);
-
-
-
-                    })
-                })
-            })
-
-
+                    });
+                });
+            });
         })
     }, [])
 
@@ -49,7 +43,7 @@ export default function RecentUploads() {
             {isEmpty ? <Alert className="center" severity="error" color="warning" sx={{ background: 'crimson', color: '#fff', width: '100%', position: 'absolute', bottom: '0', left: '0' }}>No images uploaded</Alert> :
 
                 downloadLinks.map((img, index) =>
-                    <Image title={metadata[index].customMetadata.title} key={index} path={metadata[index].fullPath} type={metadata[index].contentType} image={img} size={shortenSize(metadata[index].size * 0.000001)} uploaded={metadata[index].timeCreated.slice(0, -14)} />)}
+                    <Image key={index} title={metadata[index].customMetadata.title} likes={metadata[index].customMetadata.likes} imgPath={metadata[index].customMetadata.path} path={metadata[index].fullPath} dislikes={metadata[index].customMetadata.dislikes} type={metadata[index].contentType} image={img} size={shortenSize(metadata[index].size * 0.000001)} uploaded={metadata[index].timeCreated.slice(0, -14)} />)}
             {folders.map((folder, index) =>
                 <div className={styles.folderContainer}>
                     <Folder key={index * 2} className={`hoverable ` + styles.folder} onClick={() => navigateFolder({ path: folder.fullPath })} sx={{ fontSize: '15rem' }} color='success' />
@@ -62,35 +56,15 @@ export default function RecentUploads() {
     )
 
 }
-function Image({ image, size, uploaded, path, type, title }) {
+function Image({ image, size, uploaded, path, type, title, likes, dislikes, imgPath }) {
+
     const reference = ref(storage, path);
-    // Explanation for like/dislike functions:
-    // We check if there are no likes or dislikes on a picture, if so, then create a new variable on the server called likes: or dislikes: with the value of 1
-    // If there are already likes/dislikes, we just increment the field value by 1
-    // We also prevent the user from liking the same picture more times
-    // We could also create the variable when uploading a new image, both ways work.
-    const [likeCount, setLikeCount] = useState();
-    const [dislikeCount, setDislikeCount] = useState();
+    const [likeCount, setLikeCount] = useState(likes);
+    const [dislikeCount, setDislikeCount] = useState(dislikes);
     const [isLiked, setIsLiked] = useState(false);
     const [isDisliked, setIsDisliked] = useState(false);
+    const nav = useNavigate();
 
-    useEffect(() => {
-        getMetadata(reference).then((meta) => {
-            if (meta.customMetadata === undefined) {
-                setLikeCount(0);
-            }
-            else {
-                setLikeCount(meta.customMetadata.likes);
-
-            }
-            if (meta.customMetadata === undefined) {
-                setDislikeCount(0);
-            }
-            else {
-                setDislikeCount(meta.customMetadata.dislikes);
-            }
-        })
-    }, [])
 
     const likeImage = () => {
         // This is a good & a bad way to check if client liked the image or not. 
@@ -172,6 +146,7 @@ function Image({ image, size, uploaded, path, type, title }) {
                 <p>Size [MB]: {size}</p>
                 <span>File type: {type}</span>
                 <p>Created at: {uploaded}</p>
+                <Button style={{background:'navy', color:'white', width:'100%'}} onClick={() => window.location.href="https://bogyz123.github.io/sharepictures/#/image/" + imgPath}>Open</Button>
                 <div className='flex | centerX' id={styles.likes}>
                     <div className={`hoverable centerY flex ${styles.likeRatio}`}>
                         <span>{likeCount}</span>
@@ -186,17 +161,17 @@ function Image({ image, size, uploaded, path, type, title }) {
 
                 </div>
             </div>
-                    <Snackbar open={isLiked} autoHideDuration={3000} onClose={() => setIsLiked(false)} sx={{ bottom: 0, left: 0, position: 'absolute' }}>
-                        <Alert sx={styling.alert} severity="warning">
-                            You have already liked this image.
-                        </Alert>
-                    </Snackbar>
+            <Snackbar open={isLiked} autoHideDuration={3000} onClose={() => setIsLiked(false)} sx={{ bottom: 0, left: 0, position: 'absolute' }}>
+                <Alert sx={styling.alert} severity="warning">
+                    You have already liked this image.
+                </Alert>
+            </Snackbar>
 
-                    <Snackbar open={isDisliked} autoHideDuration={3000} onClose={() => setIsDisliked(false)} sx={{ bottom: 0, left: 0, position: 'absolute' }}>
-                        <Alert sx={styling.alert} severity="warning">
-                            You have already disliked this image.
-                        </Alert>
-                    </Snackbar>
+            <Snackbar open={isDisliked} autoHideDuration={3000} onClose={() => setIsDisliked(false)} sx={{ bottom: 0, left: 0, position: 'absolute' }}>
+                <Alert sx={styling.alert} severity="warning">
+                    You have already disliked this image.
+                </Alert>
+            </Snackbar>
 
         </div>
 

@@ -12,8 +12,8 @@ import github from "../images/github.svg";
 import people from "../images/people.svg";
 import photographer from "../images/photographer.svg";
 import safe from "../images/safe.svg";
-import { storage } from "./fire_connection";
 import Footer from "./Footer";
+import { storage } from "./fire_connection";
 
 export default function Homepage() {
 
@@ -74,7 +74,7 @@ export default function Homepage() {
                             customMetadata: {
                                 title: imageTitle,
                                 likes: 0,
-                                dislikes: 0
+                                dislikes: 0,
                             }
                         }
                         await updateMetadata(reference, metadata);
@@ -107,7 +107,8 @@ export default function Homepage() {
                         customMetadata: {
                             title: imageTitle,
                             likes: 0,
-                            dislikes: 0
+                            dislikes: 0,
+                            path: + randomName
                         }
                     }
                     await updateMetadata(reference, metadata);
@@ -117,7 +118,8 @@ export default function Homepage() {
                     const metadata = {
                         customMetadata: {
                             likes: 0,
-                            dislikes: 0
+                            dislikes: 0,
+                            path: randomName
                         }
                     }
                     await updateMetadata(reference, metadata);
