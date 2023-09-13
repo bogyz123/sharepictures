@@ -5,7 +5,9 @@ is a e-commerce dummy website where you can purchase your favorite sneakers! (Ea
 
 
 ## 🔗 Link
-The website can be accessed [here (bogyz123.github.io/SNKRS)]([https://bogyz123.github.io/SNKRS/](https://bogyz123.github.io/sharepictures/#/)
+The website can be accessed [here (bogyz123.github.io/sharepictures)](https://bogyz123.github.io/sharepictures/#/)
+
+
 
 ## Tools used
 
