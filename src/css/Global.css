@@ -1,24 +1,30 @@
 .flex {
-    display: flex;
+  display: flex;
 }
 .flexCol {
-    flex-direction: column;
+  flex-direction: column;
 }
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 .test {
-    background-color: red;
+  background-color: red;
 }
 .centerX {
-    justify-content: center;
+  justify-content: center;
 }
 .centerY {
-    align-items: center;
+  align-items: center;
 }
 .icon {
-    width: 100%;
+  width: 100%;
 }
 .hoverable {
-    cursor: pointer;
+  cursor: pointer;
+}
+.text-center {
+  text-align: center;
+}
+.test {
+  background-color: red;
 }

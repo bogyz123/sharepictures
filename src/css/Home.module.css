@@ -1,259 +1,240 @@
 #photographer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #photographer img {
-    max-width: 350px;
-    min-width: 200px;
-    width: 30%;
+  max-width: 350px;
+  min-width: 200px;
+  width: 30%;
 }
-
+#dialog {
+  display: flex;
+  flex-direction: column;
+}
 #flip {
-    transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
 #homepage {
-    background: linear-gradient(0deg, rgba(48, 10, 131, 1) 0%, rgba(12, 0, 54, 1) 100%);
+  background: linear-gradient(0deg, rgba(48, 10, 131, 1) 0%, rgba(12, 0, 54, 1) 100%);
 }
 
 .grid {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
 .gridItem {
-    backdrop-filter: blur(10px);
-    background-color: rgba(0, 0, 128, 10%);
-    border-radius: 10px;
-    border: 1px solid rgb(16, 16, 187);
-    padding: 15px 25px;
-    animation-name: fade;
-    animation-duration: 3s;
-    font-size: 1.2rem;
-
-
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 128, 10%);
+  border-radius: 10px;
+  border: 1px solid rgb(16, 16, 187);
+  padding: 15px 25px;
+  animation-name: fade;
+  animation-duration: 3s;
+  font-size: 1.2rem;
 }
 
 footer {
-    font-size: 1.1rem;
+  font-size: 1.1rem;
 }
 
 .gridItem img {
-    width: 8vw;
-    min-width: 100px;
+  width: 8vw;
+  min-width: 100px;
 }
-
 
 #github {
-    width: 15vw;
-    min-width: 120px;
-    max-width: 600px;
-    border-radius: 50%;
-
+  width: 15vw;
+  min-width: 120px;
+  max-width: 600px;
+  border-radius: 50%;
 }
 
-
-
-
-
-
 #githubLink {
-    color: orangered;
+  color: orangered;
 }
 
 #gitDescription {
-    grid-column-start: 1;
-    grid-column-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
 }
 
 #githubSection {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    background-color: rgb(42, 23, 117);
-    font-size: 1.7rem;
-    margin-top: 2rem;
-    gap: 25px;
-    width: 80%;
-    margin-inline: auto;
-    border-radius: 15px;
-    padding: 1.5rem 1.5rem;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  background-color: rgb(42, 23, 117);
+  font-size: 1.7rem;
+  margin-top: 2rem;
+  gap: 25px;
+  width: 80%;
+  margin-inline: auto;
+  border-radius: 15px;
+  padding: 1.5rem 1.5rem;
 }
 
 .gitItem {
-
-    align-self: center;
-    justify-self: center;
-
+  align-self: center;
+  justify-self: center;
 }
 
 @keyframes fade {
-    from {
-        opacity: 0%;
-    }
+  from {
+    opacity: 0%;
+  }
 
-    to {
-        opacity: 100%;
-    }
+  to {
+    opacity: 100%;
+  }
 }
 
 .logo {
-    width: 89%;
+  width: 89%;
 }
 
 #uploadedImg {
-    width: 100%;
+  width: 100%;
 }
 
 #closeImage {
-    position: absolute;
-    right: 0;
+  position: absolute;
+  right: 0;
 }
 
 #close {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 #grid div img {
-    width: 10vw;
-    max-width: 125px;
-    min-width: 75px;
-
-
+  width: 10vw;
+  max-width: 125px;
+  min-width: 75px;
 }
 
 .previewImage {
-    width: 13vw;
-    min-width: 100px;
-    max-width: 150px;
-    border-radius: .5rem;
-
-
-
+  width: 13vw;
+  min-width: 100px;
+  max-width: 150px;
+  border-radius: 0.5rem;
 }
 
 .gitGradient {
-    background: linear-gradient(45deg, orangered, rgb(217, 255, 0));
-    width: fit-content;
-    background-clip: text;
+  background: linear-gradient(45deg, orangered, rgb(217, 255, 0));
+  width: fit-content;
+  background-clip: text;
 }
 
 .gitItem p,
 h2 {
-    color: transparent;
+  color: transparent;
 }
 
 #preview {
-    display: flex;
-    column-gap: 5px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 7px;
-    flex-grow: 1;
+  display: flex;
+  column-gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 7px;
+  flex-grow: 1;
 }
 
 #websiteDescription {
-    text-align: center;
-    font-size: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
-    margin-inline: auto;
-    row-gap: 15px;
-    margin-bottom: 10rem;
-    position: relative;
-    animation-name: opacity;
-    animation-duration: 2s;
+  text-align: center;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin-inline: auto;
+  row-gap: 15px;
+  margin-bottom: 10rem;
+  position: relative;
+  animation-name: opacity;
+  animation-duration: 2s;
 }
 
 @keyframes opacity {
-    from {
-        opacity: 0%;
-    }
+  from {
+    opacity: 0%;
+  }
 
-    to {
-        opacity: 100%;
-    }
+  to {
+    opacity: 100%;
+  }
 }
 
 #websiteDescription::after {
-    content: '';
-    width: 0%;
-    left: 0;
-    top: 0;
-    height: 100%;
-    position: absolute;
-    backdrop-filter: blur(10px);
-    animation-name: swipe;
-    animation-duration: 1s;
-    animation-timing-function: cubic-bezier(1, -0.01, .12, .8);
+  content: "";
+  width: 0%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  backdrop-filter: blur(10px);
+  animation-name: swipe;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(1, -0.01, 0.12, 0.8);
 }
 
 @keyframes swipe {
-    from {
-        width: 100%;
-        backdrop-filter: blur(50%);
+  from {
+    width: 100%;
+    backdrop-filter: blur(50%);
+  }
 
-    }
-
-    to {
-        width: 0%;
-        backdrop-filter: blur(50%);
-
-    }
+  to {
+    width: 0%;
+    backdrop-filter: blur(50%);
+  }
 }
 
 @media screen and (max-width: 1110px) {
-    html {
-        font-size: 14px;
-    }
+  html {
+    font-size: 14px;
+  }
 
-    #githubSection {
-        font-size: 1.5rem;
-    }
+  #githubSection {
+    font-size: 1.5rem;
+  }
 
-    #photographer {
-        margin-top: 150px;
-    }
+  #photographer {
+    margin-top: 150px;
+  }
 
-    html {
-        font-size: 14px;
-    }
-
-
+  html {
+    font-size: 14px;
+  }
 }
 
-@media screen and (max-width:810px) {
-    html {
-        font-size: 12px;
-    }
+@media screen and (max-width: 810px) {
+  html {
+    font-size: 12px;
+  }
 
+  #photographer {
+    margin-top: 185px;
+  }
 
-    #photographer {
-        margin-top: 185px;
-    }
+  #githubSection {
+    font-size: 1.3rem;
+    padding: 0px 20px;
+    width: 100%;
+    border-radius: 0px;
+  }
 
-    #githubSection {
-        font-size: 1.3rem;
-        padding: 0px 20px;
-        width: 100%;
-        border-radius: 0px;
-    }
+  .grid {
+    flex-direction: column;
+    max-width: 100%;
+    row-gap: 10px;
+  }
 
-    .grid {
-        flex-direction: column;
-        max-width: 100%;
-        row-gap: 10px;
-    }
-
-    .gridItem {
-        max-width: 100%;
-    }
+  .gridItem {
+    max-width: 100%;
+  }
 }

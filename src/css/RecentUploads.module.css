@@ -1,81 +1,61 @@
 #imageList {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 3rem 1rem 3rem 1rem;
-    gap: 1rem;
-    background: linear-gradient(0deg, rgba(9, 1, 27, 1) 0%, rgb(34, 14, 107) 100%);
-    justify-content: start;
-    height: 100vh;
-    overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3rem 1rem 3rem 1rem;
+  gap: 1rem;
+  background: linear-gradient(0deg, rgba(9, 1, 27, 1) 0%, rgb(34, 14, 107) 100%);
+  justify-content: start;
+  gap: 15px;
+  min-height: max-content;
+  height: 100vh;
 }
 
-.likeRatio {
-    column-gap: 5px;
-}
-
-
-
-
-#likes {
-    column-gap: 2rem;
-}
 .container {
-    transition: .8s ease scale;
-    padding-inline: 1rem;
+  height: fit-content;
+  flex-grow: 1;
+  padding: clamp(8px, 2vw, 20px);
+  border-radius: 5px;
+  background: linear-gradient(0deg, rgba(9, 1, 27, 1) 0%, rgb(34, 14, 107) 100%);
+  box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.75);
+  margin-right: 10px;
 }
-.container:hover {
-    scale: 1.1;
+.img img {
+  width: 100%;
+  aspect-ratio: 5/2;
+  object-fit: cover;
 }
-* {
-    box-sizing: border-box;
+.img {
+  width: 100%;
+  display: flex;
 }
-
 .image {
-    width: 100%;
-    max-width: 260px;
-    max-height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
+  width: 100%;
+  max-width: 260px;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .metadata p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 #emptyList {
-    margin: auto;
-    font-size: 1.3rem;
+  margin: auto;
+  font-size: 1.3rem;
 }
-
-
-
 
 .folderContainer {
-
-    position: relative;
-}
-.folder {
-    transition: all 2s;
-}
-.folder:hover {
-    scale: 1.01;
+  position: relative;
 }
 
 .folderContainer p {
-    position: absolute;
-    font-size: .8rem;
-    left: 37px;
+  position: absolute;
+  font-size: 0.8rem;
+  left: 37px;
 }
 
 .folderContainer .folderText {
-    top: 43px;
-}
-
-
-@media screen and (max-width: 1130px) {
-    #imageList {
-        justify-content: center;
-        height: fit-content;
-    }
+  top: 43px;
 }
