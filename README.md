@@ -13,4 +13,10 @@ The tools I've used to build this are the following:
 - Redux & Redux-Persist
 - MaterialUI
 
-
+## Todo
+- [ ] fix /recentuploads transition scale off bounds on mobile
+- [ ] fix bug where you can like & dislike
+- [ ] fix like/dislike message offset and buggy
+- [ ] /image/:image container not full screen?
+- [ ] optimize js
+- [ ] make footer prettier
