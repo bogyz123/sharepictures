@@ -1,6 +1,5 @@
 #imageList {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   padding: 3rem 1rem 3rem 1rem;
   gap: 1rem;
   background: linear-gradient(0deg, rgba(9, 1, 27, 1) 0%, rgb(34, 14, 107) 100%);
@@ -8,11 +7,11 @@
   gap: 15px;
   min-height: max-content;
   height: 100vh;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Flexible columns */
 }
 
 .container {
   height: fit-content;
-  flex-grow: 1;
   padding: clamp(8px, 2vw, 20px);
   border-radius: 5px;
   background: linear-gradient(0deg, rgba(9, 1, 27, 1) 0%, rgb(34, 14, 107) 100%);
@@ -22,11 +21,13 @@
 .img img {
   width: 100%;
   aspect-ratio: 5/2;
+  margin-inline:auto;
   object-fit: cover;
 }
 .img {
   width: 100%;
   display: flex;
+  margin-bottom:10px;
 }
 .image {
   width: 100%;

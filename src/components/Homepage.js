@@ -66,16 +66,6 @@ export default function Homepage() {
             const metadata = {
               customMetadata: {
                 title: imageTitle,
-                likes: 0,
-                dislikes: 0,
-              },
-            };
-            await updateMetadata(reference, metadata);
-          } else {
-            const metadata = {
-              customMetadata: {
-                likes: 0,
-                dislikes: 0,
               },
             };
             await updateMetadata(reference, metadata);
@@ -83,7 +73,7 @@ export default function Homepage() {
           if (index == files.length - 1) {
             setUrl(folderPath);
           }
-        });
+        }).catch(() => setUploadError(true));
       });
     } else {
       const randomName = v4();

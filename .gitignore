@@ -2,7 +2,7 @@
 /node_modules
 /.pnp
 .pnp.js
-/components/fire_connection.js
+/src/fire_connection.js
 
 
 /coverage

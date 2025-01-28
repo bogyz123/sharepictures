@@ -8,7 +8,6 @@ import { storage } from "../fire_connection";
 
 export const shortenSize = (size) => {
   var stringified = String(size);
-
   var beforeDot = stringified.substring(0, stringified.indexOf(".", 0));
   var afterDot = stringified.substring(stringified.indexOf(".", 0), stringified.indexOf(".", 0) + 3);
   return beforeDot + afterDot;
@@ -24,8 +23,6 @@ export default function ImageTemplate() {
   useEffect(() => {
     getDownloadURL(ref(storage, `images/${id}`))
       .then((url) => {
-        const xhr = new XMLHttpRequest();
-        xhr.responseType = "blob";
         setImage(url);
       })
       .then(() => {
@@ -42,10 +39,10 @@ export default function ImageTemplate() {
           <Alert severity="error">This image does not exist.</Alert>
         </div>
       )}
-      <img src={image} id={styles.image} />
+      <img src={image} id={styles.image} alt={metadata.customMetadata?.title} />
       {image != null && (
         <div className=" flex | flexCol | centerY">
-          {metadata.customMetadata?.title != undefined && <h4>Title: {metadata.customMetadata.title}</h4>}
+          {metadata.customMetadata?.title != undefined && <h4>Title: {metadata.customMetadata?.title}</h4>}
           <h4 id="size">Size (MB): {size}</h4>
           <Button variant="contained">
             <a download href={`${image}`}>
