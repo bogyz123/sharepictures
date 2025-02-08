@@ -7,9 +7,6 @@
 * {
   box-sizing: border-box;
 }
-.test {
-  background-color: red;
-}
 .centerX {
   justify-content: center;
 }

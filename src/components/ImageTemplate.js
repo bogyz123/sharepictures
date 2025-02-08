@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import "../css/Global.css";
 import styles from "../css/ImageTemplate.module.css";
-import { storage } from "../fire_connection";
+import { storage } from "./fire_connection";
 
 export const shortenSize = (size) => {
   var stringified = String(size);

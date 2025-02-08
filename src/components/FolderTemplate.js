@@ -2,7 +2,7 @@ import { getDownloadURL, listAll, ref } from "firebase/storage";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import styles from "../css/FolderTemplate.module.css";
-import { storage } from "../fire_connection";
+import { storage } from "./fire_connection";
 
 export default function FolderTemplate() {
   const { state } = useLocation();

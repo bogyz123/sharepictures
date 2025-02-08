@@ -1,7 +1,7 @@
 import { Close } from "@mui/icons-material";
 import { Alert, Button, Dialog, Input, LinearProgress, Snackbar } from "@mui/material";
 import { getDownloadURL, ref, updateMetadata, uploadBytes } from "firebase/storage";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { v4 } from "uuid";
 import "../css/Global.css";
@@ -13,7 +13,9 @@ import people from "../images/people.svg";
 import photographer from "../images/photographer.svg";
 import safe from "../images/safe.svg";
 import Footer from "./Footer";
-import { storage } from "../fire_connection";
+import { storage } from "./fire_connection";
+
+
 
 export default function Homepage() {
   const [open, setOpen] = useState(false);
@@ -23,6 +25,9 @@ export default function Homepage() {
   const [uploadError, setUploadError] = useState(false);
   const [url, setUrl] = useState(null);
   const [uploading, setUploading] = useState(false);
+
+
+  
 
   const styling = {
     button: {
@@ -42,18 +47,21 @@ export default function Homepage() {
     inputPlaceholder: {
       color: "#fff",
       fontFamily: "Kanit, sans-serif",
+      padding:'5px',
+      width:'90%',
+      marginInline:'auto',
     },
     closeIcon: {
       position: "absolute",
+      right: '0',
     },
   };
-  const handleChange = (e) => {
-    setFiles([...e.target.files]);
-    setOpen(true);
-  };
-
   const nav = useNavigate();
-
+  const handleChange = useCallback((e) => {
+    setFiles([...e.target.files]); 
+    setOpen(true); 
+  }, []);
+  
   const upload = async () => {
     const imageCount = files.length;
     const folderPath = `/images/${v4()}`;
@@ -83,8 +91,6 @@ export default function Homepage() {
           const metadata = {
             customMetadata: {
               title: imageTitle,
-              likes: 0,
-              dislikes: 0,
               path: randomName,
             },
           };
@@ -92,8 +98,6 @@ export default function Homepage() {
         } else {
           const metadata = {
             customMetadata: {
-              likes: 0,
-              dislikes: 0,
               path: randomName,
             },
           };
@@ -107,9 +111,13 @@ export default function Homepage() {
   };
   const handleDialog = () => {
     setOpen(false);
+    setFiles([]); 
     setUrl(null);
     setUploading(false);
   };
+  
+  
+  
 
   return (
     <div id={styles.homepage}>
@@ -146,7 +154,7 @@ export default function Homepage() {
             <span onClick={handleDialog} className="hoverable">
               <Close color="error" sx={styling.closeIcon} />
             </span>
-            <h3 className="text-center">Image/s</h3>
+            <h3 className="text-center">Images</h3>
             {files.length === 1 && <Input sx={styling.inputPlaceholder} type="text" placeholder="Title (optional)" onChange={(e) => setImageTitle(e.target.value)} />}
             <small>
               <center>Total {files.length} images</center>
@@ -173,7 +181,7 @@ export default function Homepage() {
                   <LinearProgress color="success" />
                 ) : (
                   <Button variant="contained" onClick={() => upload()}>
-                    Submit
+                    Upload
                   </Button>
                 )}
               </div>
@@ -210,10 +218,10 @@ export default function Homepage() {
 
       <div id={styles.githubSection}>
         <div className={styles.gitItem} id={styles.gitDescription}>
-          <div className={styles.gitGradient}>
-            <h2>Open Source</h2>
+          <div className={`${styles.fromLeft}`}>
+            <h2 className={`${styles.popIn} ${styles.gitGradient}`}>Open Source</h2>
           </div>
-          <p className={styles.gitGradient}>
+          <p className={`${styles.gitGradient} ${styles.fromLeft} ${styles.popIn}`}>
             SharePictures is fully open source and could be accessed{" "}
             <a href="https://github.com/bogyz123/sharepictures" className="link" target="_blank" id={styles.githubLink}>
               here
