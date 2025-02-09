@@ -143,7 +143,7 @@ export default function Homepage() {
           <small>
             Share your favorite photos with other people on the internet. <br /> *Deleted images are removed from the server too.
           </small>
-          <Button variant="contained" component="label" sx={{ fontSize: "1.1rem" }}>
+          <Button variant="contained" id={styles.upload} component="label" sx={{ fontSize: "1.1rem" }}>
             Upload
             <input onChange={(e) => handleChange(e)} accept="image/*" multiple type="file" hidden />
           </Button>

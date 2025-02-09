@@ -71,7 +71,14 @@ footer {
   width: 8vw;
   min-width: 100px;
 }
-
+#upload {
+  transition: all 150ms ease;
+}
+#upload:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); 
+  
+}
 #github {
   width: 15vw;
   min-width: 120px;
@@ -191,15 +198,18 @@ footer {
   position: relative;
   animation-name: opacity;
   animation-duration: 2s;
+  padding-inline:10px
 }
 
 @keyframes opacity {
   from {
-    opacity: 0%;
+    opacity: 0;
+    scale: 0.5;
   }
 
   to {
     opacity: 100%;
+    scale: 1;
   }
 }
 
