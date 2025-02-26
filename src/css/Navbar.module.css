@@ -1,30 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 
-* {
-    font-family: 'Kanit', sans-serif;
-}
 
-#navbarContainer {
+.navbarContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: linear-gradient(0deg, rgb(22, 3, 61) 0%, rgb(26, 5, 102) 100%);
 }
 
-#searchButton {
+.searchButton {
     position: absolute;
     right: 0;
     top: 0;
 }
 
 
-#search {
+.search {
     margin-inline: auto;
     width: 30vw;
     position: relative;
 }
 
-#navbarControls {
+.navbarControls {
     margin-right: 3rem;
     display: flex;
     column-gap: 1vw;
@@ -32,17 +29,18 @@
     position: relative;
     user-select: none;
     align-items: center;
-   
-}
-#navbarControls span {
-    transition: color .4s ease-in-out, box-shadow .4s ease-in-out;
-}
-#navbarControls span:hover {
-    color: white;
-    box-shadow: inset 185px 0 0 0 rgb(0, 47, 255);
 }
 
-#header {
+.navbarControls span {
+    position: relative;
+    transition: color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    color: gray;
+}
+.navbarControls span:hover {
+    color: white;
+}
+
+.header {
     margin-left: 20px;
     font-size: calc(12px + 1vw);
     user-select: none;

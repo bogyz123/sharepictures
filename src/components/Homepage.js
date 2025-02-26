@@ -1,7 +1,7 @@
 import { Close } from "@mui/icons-material";
 import { Alert, Button, Dialog, Input, LinearProgress, Snackbar } from "@mui/material";
 import { getDownloadURL, ref, updateMetadata, uploadBytes } from "firebase/storage";
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { v4 } from "uuid";
 import "../css/Global.css";
@@ -27,7 +27,6 @@ export default function Homepage() {
   const [uploading, setUploading] = useState(false);
 
 
-  
 
   const styling = {
     button: {
@@ -57,10 +56,11 @@ export default function Homepage() {
     },
   };
   const nav = useNavigate();
-  const handleChange = useCallback((e) => {
-    setFiles([...e.target.files]); 
+  const handleChange =(e) => {
     setOpen(true); 
-  }, []);
+    setFiles([...e.target.files]); 
+    e.target.value = null;
+  };
   
   const upload = async () => {
     const imageCount = files.length;

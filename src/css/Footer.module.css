@@ -1,5 +1,4 @@
-#footer {
-  background-color: rgba(0, 0, 128, 0.1);
+.footer {
   padding-block: 40px;
   display: flex;
   flex-direction: column;
@@ -7,18 +6,21 @@
   justify-content: center;
   position: relative;
   box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to bottom, rgba(48,10,131,1), rgb(5, 0, 20));
+  margin-top: 10px;
 }
 
-#header {
+.header {
   font-size: clamp(20px, 4vw, 36px);
   color: gray;
   font-weight: 600;
   margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  
 }
 
-#description {
+.description {
   width: 100%;
   max-width: 800px;
   text-align: center;
@@ -29,7 +31,7 @@
   line-height: 1.6;
 }
 
-#techStack {
+.techStack {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -42,37 +44,37 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-#techStack img {
+.techStack img {
   aspect-ratio: 1/1;
   width: clamp(20px, 3vw, 40px);
   margin-bottom: 10px;
   transition: transform 0.3s ease;
 }
 
-#techStack:hover {
+.techStack:hover {
   opacity: 1;
 }
 
-#techStack img:hover {
+.techStack img:hover {
   transform: scale(1.1);
 }
 
 @media screen and (max-width: 1306px) {
-  #techStack {
+  .techStack {
     display: none;
   }
 }
 
 @media screen and (max-width: 768px) {
-  #footer {
+  .footer {
     padding-block: 30px;
   }
 
-  #header {
+  .header {
     font-size: clamp(18px, 4vw, 28px);
   }
 
-  #description {
+  .description {
     font-size: clamp(14px, 2.2vw, 16px);
   }
 }

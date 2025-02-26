@@ -53,13 +53,6 @@ export default function RecentUploads() {
   );
 }
 function Image({ image, size, uploaded, type, title, imgPath }) {
-  const styling = {
-    alert: {
-      backgroundColor: "yellow",
-      fontFamily: "Kanit, sans-serif",
-      color: "rgb(0,0,255)",
-    },
-  };
   return (
     <div className={styles.container}>
       <div className={styles.img}>
